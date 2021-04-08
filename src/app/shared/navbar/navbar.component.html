@@ -15,27 +15,25 @@
           </a>
         </li>
       
-      </ul>
-        
-      
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login" *ngIf="!isLogged">Login
+      </ul>      
+      <ul class="navbar-nav mx-auto" *ngIf="user$ | async as user">
+        <li class="nav-item" *ngIf="!user">
+          <a class="nav-link" routerLink="/login">Login
           </a>
         </li>
         
-        <li class="nav-item" *ngIf="isLogged">
+        <li class="nav-item" *ngIf="user">
           <a class="nav-link" routerLink="/" (click)="onLogout()">Logout
           </a>
         </li>
         
-        <li class="nav-item" *ngIf="!isLogged">
+        <li class="nav-item" *ngIf="!user">
           <a class="nav-link" routerLink="/register" >Register
           </a>
         </li>
 
-        <li class="nav-item" *ngIf="isLogged">
-          <a class="nav-link" > {{ user.email}}
+        <li class="nav-item" *ngIf="user">
+          <a class="nav-link" > {{ user?.email}}
           </a>
         </li>
       </ul>
