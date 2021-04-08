@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from "@angular/forms";
+import { Router } from '@angular/router';
 
 import { AuthService } from "../service/auth.service";
 
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor(private authSvc: AuthService) { }
+  constructor(private authSvc: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,6 +25,15 @@ export class RegisterComponent implements OnInit {
 
   onRegister(){
     const {email,password} = this.registerForm.value;
-    this.authSvc.register(email,password);
+    
+    try {
+      const user = this.authSvc.register(email,password);
+      if (user) {
+        
+        this.router.navigate(['/home']);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

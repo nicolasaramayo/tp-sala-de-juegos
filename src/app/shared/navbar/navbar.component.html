@@ -7,30 +7,35 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/']">Home
+          <a class="nav-link" routerLink="/">Home
           </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/quiensoy']">About me
+          <a class="nav-link" routerLink="/quiensoy">About me
           </a>
         </li>
       
       </ul>
         
       
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link"[routerLink]="['/login']">Login
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" *ngIf="!isLogged">Login
           </a>
         </li>
         
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/']">Logout
+        <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link" routerLink="/" (click)="onLogout()">Logout
           </a>
         </li>
         
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/register']">Register
+        <li class="nav-item" *ngIf="!isLogged">
+          <a class="nav-link" routerLink="/register" >Register
+          </a>
+        </li>
+
+        <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link" > {{ user.email}}
           </a>
         </li>
       </ul>
