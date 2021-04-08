@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { QuienSoyComponent } from './quien-soy/quien-soy.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,14 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     QuienSoyComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,HomeComponent,NavbarComponent]
 })
 export class AppModule { }

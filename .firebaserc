@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "saladejuegos-2a3a7": {
+      "hosting": {
+        "mi-app-angular": [
+          "saladejuegos-2a3a7"
+        ]
+      }
+    }
+  }
+}
