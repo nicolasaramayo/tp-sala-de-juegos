@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from "@angular/forms";
 
+import { AuthService } from "../service/auth.service";
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers: [AuthService]
 })
 export class RegisterComponent implements OnInit {
 
@@ -13,13 +16,14 @@ export class RegisterComponent implements OnInit {
     password: new FormControl(''),
   });
 
-  constructor() { }
+  constructor(private authSvc: AuthService) { }
 
   ngOnInit(): void {
   }
 
 
   onRegister(){
-    console.log('Form' , this.registerForm.value);
+    const {email,password} = this.registerForm.value;
+    this.authSvc.register(email,password);
   }
 }
