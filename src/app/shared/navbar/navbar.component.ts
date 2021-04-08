@@ -9,22 +9,13 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./navbar.component.css'],
   providers: [AuthService]
 })
-export class NavbarComponent implements OnInit {
-  public isLogged: Boolean = false;
-  public user: any;
-  public user$: Observable<any> = this.authSvc.afAuth.user;;
+export class NavbarComponent {
+  public user$: Observable<any> = this.authSvc.afAuth.user;
 
   constructor(public authSvc: AuthService, private router : Router) { }
 
   async ngOnInit() {
-    
-    this.user = await this.authSvc.getCurrentUser();
-    if (this.user) {
-      this.isLogged = true;
-     
-    }
   }
-
 
   async onLogout(){
     
